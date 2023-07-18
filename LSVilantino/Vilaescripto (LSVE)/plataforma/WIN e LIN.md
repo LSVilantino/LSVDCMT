@@ -74,7 +74,6 @@ grade_introduzir(&exemplo_grade, (Grade)
 });
 ```
 
-
 Aqui é onde se introduz um elemento à grade que deve ser libertada.
 
 ```C

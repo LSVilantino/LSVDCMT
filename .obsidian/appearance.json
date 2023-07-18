@@ -1,3 +1,5 @@
 {
-  "accentColor": ""
+  "accentColor": "#ff0000",
+  "theme": "obsidian",
+  "textFontFamily": "Amiri"
 }
