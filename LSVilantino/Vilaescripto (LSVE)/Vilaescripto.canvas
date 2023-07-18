@@ -1,0 +1,7 @@
+{
+	"nodes":[
+		{"type":"group","id":"587e0fdeed496675","x":-262,"y":-199,"width":1422,"height":1199,"label":"Técnico"},
+		{"type":"file","file":"LSVilantino/Vilaescripto (LSVE)/plataforma/WIN e LIN.md","id":"4ce9d2b9d7636693","x":-220,"y":-160,"width":1020,"height":800}
+	],
+	"edges":[]
+}

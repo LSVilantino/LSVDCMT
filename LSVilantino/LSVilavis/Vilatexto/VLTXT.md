@@ -1,0 +1,1 @@
+Motriz para amostragem de texto.

@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"type":"group","id":"043d7ee295109573","x":-1320,"y":-800,"width":2760,"height":2320,"label":"Motriz"},
+		{"type":"group","id":"469913abdb9ce761","x":1760,"y":-800,"width":2280,"height":2320,"label":"Técnico"},
+		{"type":"file","file":"LSVilantino/LSVilavis/Vilavis/VLV.md","id":"faa2f071cb8d7397","x":-680,"y":160,"width":400,"height":400},
+		{"type":"file","file":"LSVilantino/LSVilavis/Vilaáudio/VLÁ.md","id":"6938a027181ea902","x":-60,"y":200,"width":400,"height":400},
+		{"type":"file","file":"LSVilantino/LSVilavis/Vilaphys/VLPHY.md","id":"dc4359d635bfc9e0","x":555,"y":237,"width":400,"height":400},
+		{"type":"file","file":"LSVilantino/LSVilavis/LSVV.md","id":"1df6cb67306cba36","x":-60,"y":-688,"width":400,"height":400},
+		{"type":"file","file":"LSVilantino/LSVilavis/Vilatexto/VLTXT.md","id":"892f5bd9e0c3ae85","x":-1080,"y":980,"width":400,"height":400},
+		{"type":"file","file":"LSVilantino/LSVilavis/Vilacolis/VLCOL.md","id":"9ef6cd1d1daa9c5b","x":955,"y":980,"width":400,"height":400},
+		{"type":"link","url":"https://github.com/LSVilantino/LSVilavis","id":"182cb4febbc24a8b","x":-1220,"y":-688,"width":669,"height":554}
+	],
+	"edges":[
+		{"id":"44afad602935293d","fromNode":"1df6cb67306cba36","fromSide":"bottom","toNode":"faa2f071cb8d7397","toSide":"top"},
+		{"id":"034189abc8a5f0b6","fromNode":"1df6cb67306cba36","fromSide":"bottom","toNode":"6938a027181ea902","toSide":"top"},
+		{"id":"01e2ad38d8e030dc","fromNode":"1df6cb67306cba36","fromSide":"bottom","toNode":"dc4359d635bfc9e0","toSide":"top"},
+		{"id":"5b56f1e7fd5f8093","fromNode":"dc4359d635bfc9e0","fromSide":"bottom","toNode":"9ef6cd1d1daa9c5b","toSide":"top"},
+		{"id":"f8545ac572bdf433","fromNode":"faa2f071cb8d7397","fromSide":"bottom","toNode":"892f5bd9e0c3ae85","toSide":"top"},
+		{"id":"f2014d9d5920f3a9","fromNode":"182cb4febbc24a8b","fromSide":"right","toNode":"1df6cb67306cba36","toSide":"left"}
+	]
+}
