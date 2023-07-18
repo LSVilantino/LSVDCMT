@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "6892f94938e3a28d",
+        "id": "eacc9a20104095a5",
         "type": "tabs",
         "children": [
           {
-            "id": "f882561e19c9be4a",
+            "id": "15e4f1ee8fec1440",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LSVilantino/Vilaescripto (LSVE)/plataforma/WIN e LIN.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "LSVilantino/Vilaescripto (LSVE)/plataforma/WIN e LIN.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "LSVilantino/Vilaescripto (LSVE)/plataforma/WIN e LIN.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "LSVilantino/Vilaescripto (LSVE)/plataforma/WIN e LIN.md"
+                "file": "README.md"
               }
             }
           }
@@ -146,10 +146,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f882561e19c9be4a",
+  "active": "15e4f1ee8fec1440",
   "lastOpenFiles": [
-    "LSVilantino/Vilaescripto (LSVE)/Vilaescripto.canvas",
     "LSVilantino/Vilaescripto (LSVE)/plataforma/WIN e LIN.md",
+    "README.md",
+    "Untitled",
+    "LSVilantino/Vilaescripto (LSVE)/Vilaescripto.canvas",
     "LSVilantino/Vilaescripto (LSVE)/LSVE.md",
     "C/As 3 primeiras versões iniciais do LSVE.md"
   ]

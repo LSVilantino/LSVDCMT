@@ -1,5 +1,7 @@
 {
   "accentColor": "#ff0000",
   "theme": "obsidian",
-  "textFontFamily": "Amiri"
+  "textFontFamily": "Sitka Heading,Liberation Serif",
+  "baseFontSize": 16,
+  "nativeMenus": false
 }

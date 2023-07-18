@@ -126,7 +126,7 @@ RECOMENDAÇÃO
 #define recúo__2                recúo - 1
 ```
 
-#
+#####
 
 ``` C
 #define linha ((char*) exemplo_grade.filho[0].elemento)
@@ -254,6 +254,7 @@ AF2 --> AF2F2 --> D
 #LSVE/Traço
 
 - [ ] Ler ficheiros
+
 ```
 Os ficheiros devem ser lidos a partir das linhas de commandos, 2 ficheiros devem ser lidos. O primeiro é o ficheiro de desbraga, do segundo a frente, os de corrida.
 ```

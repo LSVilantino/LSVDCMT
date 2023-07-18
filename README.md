@@ -1,0 +1,1 @@
+Basta descarregar com git e abrir no Obsidian.
