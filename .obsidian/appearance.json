@@ -1,7 +1,10 @@
 {
   "accentColor": "#ff0000",
   "theme": "obsidian",
-  "textFontFamily": "Sitka Heading,Liberation Serif",
+  "textFontFamily": "Gentium Book Basic,Gentium Basic,Georgia,Sitka Text,Liberation Serif",
   "baseFontSize": 16,
-  "nativeMenus": false
+  "nativeMenus": false,
+  "enabledCssSnippets": [
+    "slide_fix"
+  ]
 }

@@ -8,4 +8,9 @@ Guarda = Include Guard
 
 Visionário, Visual ou Gráphico = Graphic
 
+
+Vero = True
+Fal = false
+
+
 #PT
