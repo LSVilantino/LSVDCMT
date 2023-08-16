@@ -1,0 +1,115 @@
+/* notation checkboxes */
+.markdown-preview-view .task-list-item-checkbox {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  border: 1px solid var(--text-normal);
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  transition: background-color 200ms ease-out 0s;
+  cursor: pointer;
+  filter: none;
+  border-radius: 4px;
+}
+.markdown-preview-view .task-list-item-checkbox:checked {
+  border: none;
+  background-color: var(--interactive-accent);
+}
+.markdown-preview-view .task-list-item-checkbox:hover {
+  background-color: var(--background-primary-alt);
+}
+.markdown-preview-view .task-list-item-checkbox:checked::before,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox::before {
+  position: absolute;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  line-height: 13px;
+  left:0px;
+  right:0px;
+}
+
+.markdown-preview-view ul>li.task-list-item {
+  font-weight: normal;
+  color: var(--text-normal);
+}
+
+/* hide strikethroughs on hover */
+.markdown-preview-view ul>li.task-list-item:hover,
+.markdown-source-view.mod-cm6 .hypermd-task-line[data-task]:hover {
+    text-decoration: none;
+}
+
+
+/* all checked task */
+.markdown-preview-view li:not([data-task="x"]):not([data-task="x"]) > .task-list-item-checkbox:checked::after,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox:not([data-task="x"]):not([data-task="x"]):checked::after {
+  background-color: transparent;
+}
+
+/* failed */
+.markdown-preview-view li[data-task="!"] > .task-list-item-checkbox:checked,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task="!"] {
+  border: 1px solid #a90000;
+  background-color: #a90000;
+}
+.markdown-preview-view li[data-task="!"] > .task-list-item-checkbox:checked::before,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task="!"]::before {
+  content: '!';
+}
+.markdown-preview-view .task-list-item[data-task="!"],
+.markdown-source-view.mod-cm6 .hypermd-task-line[data-task="!"] {
+  color: var(--checklist-done-color);
+  text-decoration: dotted line-through red;
+}
+
+/* abandoned/canceled */
+.markdown-preview-view li[data-task="~"] > .task-list-item-checkbox:checked,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task="~"] {
+  border: 1px solid var(--text-faint);
+  background-color: var(--text-faint);
+}
+.markdown-preview-view li[data-task="~"]>.task-list-item-checkbox:checked::before,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task="~"]::before {
+  content: '~';
+}
+.markdown-preview-view .task-list-item[data-task="~"],
+.markdown-source-view.mod-cm6 .hypermd-task-line[data-task="~"] {
+  color: var(--checklist-done-color);
+  text-decoration: wavy line-through var(--text-faint);
+}
+
+/* deferred */
+.markdown-preview-view li[data-task=">"] > .task-list-item-checkbox:checked,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task=">"] {
+  border: 1px solid var(--text-faint);
+  background-color: var(--text-faint);
+}
+.markdown-preview-view li[data-task=">"]>.task-list-item-checkbox:checked::before,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task=">"]::before {
+  content: '>';
+}
+.markdown-preview-view .task-list-item[data-task=">"],
+.markdown-source-view.mod-cm6 .hypermd-task-line[data-task=">"] {
+  color: var(--checklist-done-color);
+  text-decoration: dotted line-through #a99400;
+}
+
+/* unknown status */
+.markdown-preview-view li[data-task="?"] > .task-list-item-checkbox:checked,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task="?"] {
+  border: 1px solid #af99e9;
+  background-color: #af99e9;
+}
+.markdown-preview-view li[data-task="?"]>.task-list-item-checkbox:checked::before,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox[data-task="?"]::before {
+  content: '?';
+}
+.markdown-preview-view .task-list-item[data-task="?"],
+.markdown-source-view.mod-cm6 .hypermd-task-line[data-task="?"] {
+  color: var(--checklist-done-color);
+  text-decoration: dotted line-through #a99400;
+}

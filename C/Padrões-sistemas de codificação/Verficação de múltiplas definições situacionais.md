@@ -1,5 +1,3 @@
-## Verficação de múltiplas definições situacionais
-
 É comúm em C  que se use várias definições para variar o comportamento do programa sem têr de quebrá-lo em várias instâncias. Em muitos casos, é requerido somente uma única delas, então olhar por cada definição contra outras para saber se múltiplas foram introduzidas pode ser um processo complicado, se o critério é simplesmente se estiver definida.
 
 Exemplo: 
@@ -62,15 +60,6 @@ void main(int** a, char** b) {
 	janela_abrir();
 }
 ```
-
-#
-***
-
-## Sistema-Grade
-
-O Sistema-Grade deve ser usado para que a gestão de memória seja facilitada. Foi criada no LSVE, descripto detalhadamente em alguma de suas versões.
-
-![](WIN%20e%20LIN.md)
 
 #
 ***

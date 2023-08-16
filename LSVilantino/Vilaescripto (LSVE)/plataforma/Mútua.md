@@ -1,34 +1,43 @@
 # v0-1.0.0-0 - Estabilização 
 
-- [ ] Estabilização completa do LSVE
+- [-] Estabilização completa do LSVE
 
 ``` 
-Eliminar problemas de fechas repentinas no programa, causadas por uso de valôr des-inicializado, ou má gestão de memórias.
+Eliminar problemas de fechas repentinas no programa, causadas por uso de valôr des-inicializado, ou má gestão de memórias e código mal-escripto por in-experiência.
+
+Em suma, re-escrever a applicação da maneira correcta.
 ```
+
 #LSVE/Correcção
 
 #
-***
+---
 
 # v0-0.4.0-0
 
-- [ ] Automatização da gestão de memória
+- [x] Automatização da gestão de memória
 
 ```
 Deve-se encontrar alguma forma de extraviar a complexidade natural do uso de memória em C.
 ```
 
-#LSVE/Traço
-
-#### Grade
+### Grade
+#LSV/C
 
 A grade é um jeito preguiçoso de se libertar memória com uma linha só.
 
 C tem uma limitação problemática quanto à libertação de memória. Há de se liberar toda memória que é allocada, mas se tens uma estructura e todos os seus campos são allocados, tens de libertar cada um deles.
 
-Quando há ponteiros de matrizes é ainda pior, além do campo, há de libertar cada um dos índices da matriz.
+Quando há ponteiros de matrizes o problema é pior, além do campo, há de libertar cada um dos índices da matriz.
 
 O sistema de Grade é recursivo e deve ser uma representação fiel de uma estructura qualquer. A Grade guarda um elemento e um filho de si mesmo, que contém outro elemento e outro filho de si mesmo, onde os elementos devem ser armazenados.
+
+```C
+struct Grade {
+    void* elemento;
+    Grade* filho;
+};
+```
 
 ``` diff
 AVISO
@@ -97,33 +106,37 @@ AVISO
 -Não use nomes das funcções como a guarda se não tiverem algum diferencial, em funcções recursivas a funcção é confundida com a definição. Se o diferencial for numérico, é preferível que se use o mesmo número em todas as definições. Ainda que não faça muito sentido, semânticamente, é melhor ao ler e teclar.
 
 -Não use definições com valôres variáveis, podem ser problemáticas se a funcção for recursiva e, em cada recursão, usa-se differentes contextos.
+
+-Não use definições no meio das funcções, sempre aos início e fim.
 ```
 
 ```diff
 RECOMENDAÇÃO
 
-+Deve-se definir em níveis se as mesmas definições forem usadas em funcções dependentes. 
-
-+Na funcção 1: funcção__1 (como guarda), definição__1; na 2: definição__2; na 3: funcção__3 (como guarda) definição__3
++Deve-se usar direccionamento ('goto') se a funcção tiver um retorno ou mais de uma quebra em seu fluxo.
 ```
 
 ##### ___Uso real dentro do LSVE___
 
 ``` C
-#define interpretar_linha__2
-#define linha__2                ((char*) (*linha).elemento)
-#define intérprete__2           (*((Intérprete*)(*intérprete)->elemento))
-#define intérprete_grade__2     (*intérprete)
-#define rastilho__2             (*(Rastilho*) &intérprete__2.filho[1].elemento)
-#define expressão_n__2          (*expressão_n)
-#define expressões__2           (intérprete_grade__2.filho)
-#define expressão__2            ((Expressão) intérprete_grade__2.filho[0].elemento[expressão_n__2])
-#define expressão_grade__2      (intérprete_grade__2.filho[expressão_n__2])
-#define operadores_grade__2     (expressão_grade__2.filho)
-#define operadores__2           (*(Operação**) &expressão_grade__2.filho[operador_n].elemento)
-#define operador__2             ((*(Operação**) &expressão_grade__2.filho[operador_n].elemento)[operador_n])
-#define operador_grade__2       (expressão_grade__2.filho[operador_n])
-#define recúo__2                recúo - 1
+#if defined(DEFINIÇÃO)
+
+#define linha_                  ((char*) (*linha).elemento)
+#define intérprete_             (*((Intérprete*) (*intérprete)->elemento))
+#define intérprete_grade_       (*intérprete)
+#define rastilho_               (*(Rastilho*) &intérprete_.filho[1].elemento)
+#define expressão_n_            (*tf.expressão_n)
+#define expressões_grade_       (intérprete_grade_.filho)
+#define expressão_              (**(Expressão**) &expressões_grade_[expressão_n_].elemento)
+#define expressão_grade_        (expressões_grade_[expressão_n_])
+#define operadores_grade_       (expressão_grade_.filho)
+#define operadores_             (operadores_grade_[tf.operador_n])
+#define operador_               (**(Operação**) &operadores_.elemento)
+#define operador_grade_         (operadores_grade_[tf.operador_n])
+#define operador_linha_         (*(Linha*) &linha_grade->elemento)
+#define recúo_                  (tf.recúo - 1)
+
+#endif // #if defined(DEFINIÇÃO)
 ```
 
 #####
@@ -177,7 +190,7 @@ A --> C --> F
 ```
 
 ```
-Em Estructura com matriz (principal situação de uso)
+Em Estructura com matriz (principal situação de uso, evitando o uso de ciclos e remoção manual para a liberação de memória)
 ```
 
 ``` mermaid
@@ -214,15 +227,15 @@ Em Grade
 graph TD
 
 A[Grade]
-AF1[Filho->Elmt]
+AF1[0]
 AF1B[Empilhada]
 
-AF2[Filho->Elmt]
+AF2[1]
 AF2C[Allocada]
 
-AF2F0[Filho->Elmt]
-AF2F1[Filho->Elmt]
-AF2F2[Filho->Elmt]
+AF2F0[0]
+AF2F1[1]
+AF2F2[2]
 
 D[grade_des_allocar]
 
@@ -233,32 +246,125 @@ AF2 --> AF2F1 --> D
 AF2 --> AF2F2 --> D
 ```
 
+#LSVE/Traço
+
 #
-***
+---
 
 # v0-0.3.0-0
-#LSVE/Traço
 
-- [ ] Detectar tipos diferentes de operadores
+- [x] Detectar tipos diferentes de operadores
+
+```
+Com differentes claves, separa-se o que é ficha e o que é seu valor, além de como é attribuido.
+```
+
+### Claves
+
+Quando se encontra o charactére de encerro comúm (fim do ficheiro), cerra-se a leitura e armazena seus dados.
+```
+clave_ficheiro_encerro | FDF
+
+ficha > exemplo
+-1 (implícito)
+```
+---
+Cerra a leitura, obrigatoriamente posicionado no fim da linha.
+```
+clave_ficheiro_forçar_encerro | %
+
+ficha > exemplo%
+```
+---
+Ignora a linha lida, obrigatoriamente posicionado no início da linha. No meio dela, é mais um charactére.
+```
+clave_ficheiro_comentário | #
+
+#ficha > exemplo
+ficha > real
+```
+---
+Avança sob outro ficheiro a procura de uma ficha entregue.
+```
+clave_lêr_avançar_e_procurar | >$()>
+
+ficha >$(outra_ficha)> minhas_fichas.txt (ou qualquer outro caminho a algum ficheiro)
+```
+---
+Obtém o valôr de uma ficha.
+```
+clave_ficha | $()
+
+ficha > exemplo
+outra_ficha > isto é um $(ficha)
+```
+---
+Abertura da identificação de uma ficha.
+```
+clave_ficha_abre | (
+```
+---
+Fechamento da identificação de uma ficha.
+```
+clave_ficha_fecha | )
+```
+---
+Avança sob as fichas de outro ficheiro e permite a selecção de uma delas por interface textual.
+``` 
+clave_lêr_e_escolher | >>>
+
+opções >>> minhas_opções.txt
+```
+---
+Corre o commando entregue.
+```
+clave_corrêr | >*
+
+commando >* cd ..
+```
+---
+"Importa" as fichas de outro ficheiro para a corrida actual.
+```
+clave_lêr_e_avançar | >>
+
+fichas de algum ficheiro >> ficheiro.txt
+```
+---
+Lê brutamente o que há a seguir da ficha.
+```
+clave_lêr | >
+
+ficha > texto bruto
+```
+---
+
+###
+
+#LSVE/Traço
 
 #
-***
+---
+
 # v0-0.2.0-0
-#LSVE/Traço
 
 - [ ] Sistema básico de ITU
 
-#
-***
-# v0-0.1.0-0
 #LSVE/Traço
 
-- [ ] Ler ficheiros
+#
+---
+# v0-0.1.0-0
+
+- [x] Ler ficheiros
 
 ```
 Os ficheiros devem ser lidos a partir das linhas de commandos, 2 ficheiros devem ser lidos. O primeiro é o ficheiro de desbraga, do segundo a frente, os de corrida.
 ```
 
+#LSVE/Traço
+
+#
+---
 
 #LSVE #Docum 
 #C
